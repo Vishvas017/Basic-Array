@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: black;
+            color: lightblue;
+            font-size: 30px;
+        }
+        #display
+        {
+            position: absolute;
+            top: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="display"></div>
+    <script>
+        let quotes = [
+            "If you have one true friend you have more than your share."
+        ];
+
+        function newQutoes() {
+            let store = document.getElementById('display');
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            store.innerHTML = quotes[randomIndex];
+        }
+
+        setInterval(newQutoes, 1000);
+    </script>
+</body>  
+</html>

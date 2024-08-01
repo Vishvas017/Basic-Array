@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    background-color: black;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            .container
+            {
+                height: 800px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .main
+            {
+                height: 400px;
+                width: 400px;
+                color: rgb(250, 222, 200);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .btn
+            {
+                height: 200px;
+                width: 300px;
+                background-color: #050505;
+                padding: 10%;
+                position: absolute;
+                margin: auto;
+                text-align: center;
+
+
+
+            }
+            .button-39 {
+            border: 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #fff;
+            transition: all .15s cubic-bezier(.4, 0, .2, 1);
+            background-image: linear-gradient(180deg, #c8bad2 0%, hwb(61 19% 37%) 100%);
+            box-shadow: #a14731ba 0 0 0 1px, #FFFFFF47 0 1px 0px 0 inset, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            position: relative;
+            }
+
+            .button-39:hover {
+            filter: brightness(1.08);
+            }
+
+            .button-39:active {
+            transform: scale(0.95);
+            filter: none;
+            }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="main">
+        <div class="btn">
+            <h1 id="displaytime">00:00:00</h1>
+            <button class="button-39" role="button" onclick="startWatch()">Start</button>
+            <button class="button-39" role="button" onclick="stopWatch()">Stop</button>
+            <button class="button-39" role="button" onclick="resetWatch()">Restart</button>
+        </div>
+    </div>
+    </div>
+    <script>
+        let [seconds,minutes,hours]=[0,0,0];
+        let displaytime = document.getElementById('displaytime')
+        let timer = null;
+
+        function Watchstart()
+        {
+            seconds++;
+            if(seconds == 60)
+            {
+                seconds=0;
+                minutes++;
+                if(minutes == 60)
+                {
+                    minutes=0;
+                    hours++;
+                }
+            }
+            let h=(hours < 10 ? "0" :" ")+ hours;
+            let m=(minutes < 10 ? "0" :" ")+ minutes;
+            let s=(seconds < 10 ? "0" :" ")+ seconds;
+
+            displaytime.innerHTML = h + ":" + m + ":" + s
+            
+        }
+
+        function startWatch()
+        {
+            timer = setInterval(Watchstart,1000);
+
+        }
+
+        function stopWatch()
+        {
+            clearInterval(timer)
+        }
+        function resetWatch()
+        {
+            clearInterval(timer);
+            [seconds,minutes,hours]=[0,0,0];
+            displaytime.innerHTML="00:00:00";
+        }
+    </script>
+    </div>
+</body>
+</html>
